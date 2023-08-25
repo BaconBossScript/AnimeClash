@@ -1,0 +1,40 @@
+if game.PlaceId == 13370783664 then
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "BaconBoss Hub | Anime Energy Clash Simulator 🔥", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+_G.hatch = true
+_G.selecthatch = "Egg1"
+
+
+function hatch()
+      while _G.hatch == true do   
+     game:GetService("ReplicatedStorage").Remote.Function.Luck:FindFirstChild("[C-S]DoLuck"):InvokeServer(_G.selecthatch,1)
+       wait(0.0000001)
+    end
+end
+
+local hatchTab = Window:MakeTab({
+	Name = "Egg",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+hatchTab:AddToggle({
+	Name = "Auto Hatch",
+	Default = false,
+	Callback = function(Value)
+		_G.hatch = Value
+        hatch()
+	end    
+})
+
+hatchTab:AddDropdown({
+	Name = "Select",
+	Default = "Egg1",
+	Options = {"Egg1", "Egg2", "Egg3", "Egg4", "Egg5", "Egg6", "Egg7", "Egg8", "Egg9", "Egg10", "Egg11", "Egg12", "Egg13", "Egg14", "Egg15", "Egg16", "Egg17", "Egg18", "Egg19", "Egg20", "Egg21", "Egg22"},
+	Callback = function(Value)
+		_G.selecthatch = Value
+	end    
+})
+
+end
