@@ -14,7 +14,7 @@ function hatch()
 end
 
 local hatchTab = Window:MakeTab({
-	Name = "Egg",
+	Name = "Main",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -35,6 +35,13 @@ hatchTab:AddDropdown({
 	Callback = function(Value)
 		_G.selecthatch = Value
 	end    
+})
+
+hatchTab:AddButton({
+	Name = "Script Auto Farm",
+	Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/ToraIsMe/ToraIsMe/main/0AnimeEnergy'))()
+  	end    
 })
 
 end
