@@ -21,6 +21,7 @@ function Hub()
 		_G.selecthatch = "Egg1"
 		_G.hatch2 = true
 		_G.tp = "string"
+		_G.rb = true
 		
 		function Teleport(teleportPlace)
 			local player = game.Players.LocalPlayer
@@ -33,7 +34,14 @@ function Hub()
 			   wait(0.0000001)
 			end
 		end
-		
+
+		function rb()
+			 while _G.rb == true do   
+				game:GetService("ReplicatedStorage").Remote.Event.Rebirth:FindFirstChild("[C-S]TryBuyRebirth"):FireServer()
+			 wait(0.0000001)
+		  end
+	   end
+
 		function hatch2()
 			while _G.hatch2 == true do  
 		
@@ -78,16 +86,25 @@ function Hub()
 		hatchTab:AddDropdown({
 			Name = "Select",
 			Default = "Egg1",
-			Options = {"Egg1", "Egg2", "Egg3", "Egg4", "Egg5", "Egg6", "Egg7", "Egg8", "Egg9", "Egg10", "Egg11", "Egg12", "Egg13", "Egg14", "Egg15", "Egg16", "Egg17", "Egg18", "Egg19", "Egg20", "Egg21", "Egg22"},
+			Options = {"Egg1", "Egg2", "Egg3", "Egg4", "Egg5", "Egg6", "Egg7", "Egg8", "Egg9", "Egg10", "Egg11", "Egg12", "Egg13", "Egg14", "Egg15", "Egg16", "Egg17", "Egg18", "Egg19", "Egg20", "Egg21", "Egg22", "Egg23", "Egg24", "Egg25", "Egg26", "Egg27"},
 			Callback = function(Value)
 				_G.selecthatch = Value
+			end    
+		})
+
+		hatchTab:AddToggle({
+			Name = "Auto Rebirth",
+			Default = false,
+			Callback = function(Value)
+				_G.rb = Value
+				rb()
 			end    
 		})
 
 		TpTab:AddDropdown({
 			Name = "Select",
 			Default = "World 1",
-			Options = {"World 1", "World 2", "World 3", "World 4"},
+			Options = {"World 1", "World 2", "World 3", "World 4", "World 5"},
 			Callback = function(Value)
 				_G.tp = Value  
 			end    
@@ -108,11 +125,13 @@ function Hub()
 				if _G.tp == "World 1" then
 				  Teleport(game:GetService("Workspace").SpawnLocation.CFrame)
 				elseif _G.tp == "World 2" then
-				 Teleport(game:GetService("Workspace").Check.ToWorld2.CFrame)
+				 Teleport(game:GetService("Workspace").World2.TP.CFrame)
 				elseif _G.tp == "World 3" then
-				   Teleport(game:GetService("Workspace").Check.ToWorld3.CFrame)
+				   Teleport(game:GetService("Workspace").World3.TP.CFrame)
 				elseif _G.tp == "World 4" then
-				 Teleport(game:GetService("Workspace").Check.ToWorld4.CFrame)
+				 Teleport(game:GetService("Workspace").World4.TP.CFrame)
+				elseif _G.tp == "World 5" then
+					Teleport(game:GetService("Workspace").World5.TP.CFrame)
 				end    
 			end
 		}) 
