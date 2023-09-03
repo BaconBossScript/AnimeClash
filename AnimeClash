@@ -8,7 +8,7 @@ OrionLib:MakeNotification({
     Time = 5
 })
 
-_G.Key = "tysmtysmiloveeveryone"
+_G.Key = "omg1ksubstysmiloveeveryone"
 _G.KeyInput = "string"
 
 function Hub()
@@ -44,12 +44,12 @@ function Hub()
 
 		function hatch2()
 			while _G.hatch2 == true do  
-		
-			local args = {
-			[1] = "E600"
-			}
-		
-			game:GetService("ReplicatedStorage").Remote.Event.Events:FindFirstChild("[C-S]TryGetEventReward"):FireServer(unpack(args))
+             local args = {
+             [1] = "E700"
+             }
+
+             game:GetService("ReplicatedStorage").Remote.Event.Events:FindFirstChild("[C-S]TryGetEventReward"):FireServer(unpack(args))
+
 		
 			wait(0.0000001)
 		   end
