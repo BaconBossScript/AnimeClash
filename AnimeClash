@@ -286,15 +286,13 @@ hatch2Tab:AddToggle({
     Callback = function(Value)
         _G.box = Value
         box()
-    end    
-} 
+   end   
+})
   
   
 		
-		
-
-
 end
+
 
 function CorrectKeyNotification()
 OrionLib:MakeNotification({
