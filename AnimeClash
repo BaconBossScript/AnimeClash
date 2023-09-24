@@ -64,12 +64,31 @@ function Hub()
           wait(0.000000000000000000000001)
       end
   end
+
+  _G.win = true
+
+  function win()
+      while _G.win == true do
+        local args = {
+            [1] = true
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("Event"):WaitForChild("Game"):WaitForChild("[C-S]PlayerPKEnd"):FireServer(unpack(args))
+     wait(0)   
+    end 
+end
   
   local hatchTab = Window:MakeTab({
       Name = "Main",
       Icon = "rbxassetid://4483345998",
       PremiumOnly = false
   })
+
+  local hatch2Tab = Window:MakeTab({
+    Name = "Equipment",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
   
   local eggTab = Window:MakeTab({
       Name = "Egg",
@@ -83,10 +102,93 @@ function Hub()
       PremiumOnly = false
   })
   
+  _G.farm = true
+  _G.rb = true
+  
+  function farm()
+       while _G.farm == true do
+  
+       game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("Event"):WaitForChild("Game"):WaitForChild("[C-S]PlayerClick"):FireServer()
+       wait(0)
+       game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("Event"):WaitForChild("Game"):WaitForChild("[C-S]PlayerClick"):FireServer()
+      
+       wait(0)
+       game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("Event"):WaitForChild("Game"):WaitForChild("[C-S]PlayerClick"):FireServer()
+       
+      end
+  end
+  
+  function rb()
+       while _G.rb == true do
+          game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("Event"):WaitForChild("Rebirth"):WaitForChild("[C-S]TryBuyRebirth"):FireServer()
+       wait(0)
+      end
+  end
+  
+    
+  
+  hatchTab:AddToggle({
+      Name = "Auto Train",
+      Default = false,
+      Callback = function(Value)
+          _G.farm = Value
+          farm()
+      end    
+  })
+    
+  
   hatchTab:AddButton({
-      Name = "Script Auto Farm",
+      Name = "Use Power",
       Callback = function()
-          loadstring(game:HttpGet('https://raw.githubusercontent.com/ToraIsMe/ToraIsMe/main/0AnimeEnergy'))()
+          local args = {
+              [1] = "p1"
+          }
+          
+          game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("Event"):WaitForChild("Skin"):WaitForChild("[C-S]TryEquipBestSkin"):FireServer(unpack(args))
+              end    
+  })
+  
+  
+  hatchTab:AddButton({
+      Name = "Use Ki",
+      Callback = function()
+          local args = {
+              [1] = "p2"
+          }
+          
+          game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("Event"):WaitForChild("Skin"):WaitForChild("[C-S]TryEquipBestSkin"):FireServer(unpack(args))
+              end    
+  })
+  
+  
+  hatchTab:AddButton({
+      Name = "Use Chakra",
+      Callback = function()
+          local args = {
+              [1] = "p3"
+          }
+          
+          game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("Event"):WaitForChild("Skin"):WaitForChild("[C-S]TryEquipBestSkin"):FireServer(unpack(args))
+              end    
+  })
+
+  hatchTab:AddLabel("")
+
+  hatchTab:AddToggle({
+    Name = "Auto Win",
+    Default = false,
+    Callback = function(Value)
+        _G.win = Value
+        win()
+    end    
+})
+  
+  hatchTab:AddToggle({
+      Name = "Auto Rebirth",
+      Default = false,
+      Callback = function(Value)
+          _G.rb = Value
+          rb()
       end    
   })
   
@@ -108,7 +210,7 @@ function Hub()
       end    
   })
   
-  hatchTab:AddToggle({
+  eggTab:AddToggle({
       Name = "Auto Craft All",
       Default = false,
       Callback = function(Value)
@@ -163,13 +265,29 @@ function Hub()
       end
   }) 
   
-  hatchTab:AddButton({
+  hatch2Tab:AddButton({
     Name = "Inf Gem",
     Callback = function()
         game:GetService("ReplicatedStorage").Remote.Function.Enchant:FindFirstChild("[C-S]DoEnchant"):InvokeServer("", -math.huge)
     end    
 })
-          
+
+_G.box = true
+function box()
+     while _G.box == true do
+        game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("Function"):WaitForChild("Equipment"):WaitForChild("[C-S]DoLuck"):InvokeServer()
+     wait(0)
+    end
+end
+
+hatch2Tab:AddToggle({
+    Name = "Auto Open Box",
+    Default = false,
+    Callback = function(Value)
+        _G.box = Value
+        box()
+    end    
+} 
   
   
 		
