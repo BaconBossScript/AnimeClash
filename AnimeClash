@@ -8,7 +8,7 @@ OrionLib:MakeNotification({
     Time = 5
 })
 
-_G.Key = "jih8124jn"
+_G.Key = "2188y8dw2"
 _G.KeyInput = "string"
 
 function Hub()
